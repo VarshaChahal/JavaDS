@@ -1,0 +1,33 @@
+Uses:
+    Maps, Social Media, Recommendation systems, web pages, etc.
+
+Types of graphs:
+    Directed/Undirected - can be bidirectional in case of directed. 
+    Weighted/Unweighted
+    Directed + Weighted
+
+Difference between graphs and trees:
+    there is only one path to go from one node to another in a tree.
+    there is always a root in a tree.
+
+Representing Graphs:
+    Adjacency Matrix
+    Adjacency List
+
+Adjacency List: 
+    1. If numberic, use the nodes as indeices in an array, and have another array stored in the indices which contains all the nodes this node has connections with.
+    if the gap between numbers in an array is big or the nodes are strings/chars , you can use a HashTable/Map/Dictionary   instead of using the above.
+
+Big O for Adjacency matix and Adjacency List:
+    List: 
+        Less space(in sparse graphs)
+        Faster to iterate over all edges
+        can be slower to look up specific edge
+
+    Matrix: 
+        more space(in sparse graphs)
+        slower to iterate over all edges
+        faster to lookup specific edge
+
+Operation   AdList   AdMatrix
+Add V       O(V)    O(V^2)

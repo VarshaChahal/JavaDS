@@ -1,0 +1,12 @@
+When to use BFS vs DFS:
+TimeComplexity for both is same
+BFS:
+    queue stores a lot of data in memory when the tree is wide, or big and full
+
+DFS:
+    array stores a lot of data in memory when the tree is too deep
+
+
+DFS on BST:
+    InOrder will give the data in sorted manner
+    PreOrder will give you the root immediately, you can flatten and reconstruct the tree from it.

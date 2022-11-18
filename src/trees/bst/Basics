@@ -1,0 +1,13 @@
+Time complexity:
+Searching: 
+    average case O(logn)
+    when the tree is skewed: O(n)
+Insertion:
+    best case: O(logn)
+    avg case: O(logn)
+    worst case: O(n)
+
+Special type of binary tree:
+    Heap
+    Trie
+

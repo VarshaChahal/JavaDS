@@ -1,0 +1,26 @@
+Heaps: 
+Binary heap: Min, Max
+MinBinaryHeap: Parent nodes are always smaller than the childer
+MaxBinaryHeap: Parent nodes are always greater than the children.
+
+Min,Max: no implied order between the siblings.
+
+Binary heap is as compact as possible. All the children of each node are as full as they can be and left children are filled out first. 
+Since there are no gaurantees of order between the siblings, you can always fill up the left subtree first.
+It is not a rule that the 2 second highest numbers will appear under the root of the heap.
+
+
+Uses: PriorityQueue, Graph traversal
+
+You can implement a heap using array or list since we always fill it from the left side. 
+Formula to find the children for a node: 
+    left child: 2i+1
+    right child: 2i+2 
+Formula to find parent from child:
+    parent: Math.floor((i-1)/2) 
+
+If you look at the way nodes are added to the list, you will see that it is like a BFS traversal of a binary tree. 
+
+Removal from a Binary Heap:
+Removes the root of the binary heap. Returning max element and min element in case of MaxBinaryHeap and MinBinaryHeap respectively.
+For a priority queue implemented using max binary heap, the highest priority element will be the root of the max heap.
