@@ -31,3 +31,14 @@ Big O for Adjacency matix and Adjacency List:
 
 Operation   AdList   AdMatrix
 Add V       O(V)    O(V^2)
+
+
+Graph Traversal uses:
+    Peer to peer networking
+    web crawlers
+    finding closest matches/recommendations
+    shortest path problem:
+        GPS navigation
+        solving mazes  
+        AI(shortest to win the game)
+    
