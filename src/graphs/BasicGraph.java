@@ -1,6 +1,7 @@
 package graphs;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -90,16 +91,6 @@ public class BasicGraph {
         System.out.println("adj list for A after removing edge"+graph.adjList.get(2).size());
         
 
-        /*
-         * you might get the result in different order from the dfs recursive and iterative algorithms
-         * because in recursive you are calling again on the first element of the adjacent neighbors, visiting the first element in the list in each time
-         * whereas in iterative approach, you are adding elements to the stack in the list order and they are visited by popping,
-         *          hence the last element is chosen first
-         * All in all, in recursive, first element among the neighbors list is visited first
-         *             in iterative, last element among the neighbors list is visited first
-         * The result is still in DFS.
-         */
-
         System.out.println("recursive dfs");
         Set<Integer> dfsRecursiceResult = dfs(5,true);
 
@@ -152,6 +143,18 @@ public class BasicGraph {
         }
     }
 
+         /*
+         * RESULT ORDER DIFFERENCE between Recursive DFS and Iterative DFS
+         * you might get the result in different order from the dfs recursive and iterative algorithms
+         * because in recursive you are calling again on the first element of the adjacent neighbors, visiting the first element in the list in each time
+         * whereas in iterative approach, you are adding elements to the stack in the list order and they are visited by popping,
+         *          hence the last element is chosen first
+         * All in all, in recursive, first element among the neighbors list is visited first
+         *             in iterative, last element among the neighbors list is visited first
+         * The result is still in DFS.
+         */
+
+
     /*
      * Use a stack, because we would like to go deeper onto the vertex we saw.
      * here, you add all neighbors to the stack and you can go deeper into the path only if you take out the children each time rather then the siblings
@@ -178,7 +181,14 @@ public class BasicGraph {
                     System.out.println(element);
 
                     //add all the neighbors of this element to the stack; we could use a for loop to add manually
-                    stack.addAll(adjList.get(element));
+                    ArrayList<Integer> list = adjList.get(element);
+
+                    /*
+                     * you can revert the list to make the result look like the result from recursive dfs
+                     * Refer to the comment named : RESULT ORDER DIFFERENCE 
+                     */
+                     //Collections.reverse(list);
+                    stack.addAll(list);
                 }
 
         }
