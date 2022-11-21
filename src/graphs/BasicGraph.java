@@ -1,10 +1,12 @@
 package graphs;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 import java.util.Map.Entry;
@@ -78,24 +80,28 @@ public class BasicGraph {
         graph.addVertex(5);
         graph.addVertex(6);
 
-      //  graph.addEdge(1,2);
-        graph.addEdge(2,4);
-        graph.addEdge(4,6);
+        graph.addEdge(1,2);
+        graph.addEdge(1,4);
+        graph.addEdge(2,3);
+        graph.addEdge(2,6);
+        graph.addEdge(3,6);
         graph.addEdge(4,5);
         graph.addEdge(5,6);
-        graph.addEdge(5,3);
-        graph.addEdge(1,3);
+        graph.addEdge(4,6);
 
 
         System.out.println("adj list for A after adding edge"+graph.adjList.get(1).size());
         System.out.println("adj list for A after removing edge"+graph.adjList.get(2).size());
+
+        bfs(1);
         
 
-        System.out.println("recursive dfs");
+    /*     System.out.println("recursive dfs");
         Set<Integer> dfsRecursiceResult = dfs(5,true);
 
         System.out.println("iterative dfs");
-        Set<Integer> dfsIterativeResult = dfs(5,false);
+        Set<Integer> dfsIterativeResult = dfs(5,false); */
+
 
        // dfsResult.stream().forEach((el)-> {System.out.println(el);});
      //   graph.removeEdge(2,4);
@@ -190,8 +196,25 @@ public class BasicGraph {
                      //Collections.reverse(list);
                     stack.addAll(list);
                 }
-
         }
+    }
+
+    public static Set<Integer> bfs(int vertex){
+        System.out.println("doing a bfs");
+        Map<Integer,Boolean> resultMap= new HashMap<Integer,Boolean>();
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(vertex);
+
+        while(queue.size() >0){
+            int element = queue.remove();
+            if(resultMap.get(element) == null || resultMap.get(element) != true){
+                resultMap.put(element,true);
+                System.out.println(element);
+                queue.addAll(adjList.get(element));
+            }
+        }
+        return resultMap.keySet();
     }
 
     }
