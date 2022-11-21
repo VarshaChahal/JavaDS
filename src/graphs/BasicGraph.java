@@ -119,7 +119,10 @@ public class BasicGraph {
     }
 
     public static Set<Integer> dfs(int vertex, boolean recursive){
-
+        /*
+         * You can also use a simple array instead of a map, add each visited element into the list
+         * and check if the element is visited by checking if it exists in the array
+         */
         Map<Integer, Boolean> map = new HashMap<Integer,Boolean>();
         if(recursive) dfsRec(map,vertex );
         else dfsIterative(map, vertex);
@@ -201,6 +204,10 @@ public class BasicGraph {
 
     public static Set<Integer> bfs(int vertex){
         System.out.println("doing a bfs");
+        /*
+         * You can also use a simple array instead of a map, add each visited element into the list
+         * and check if the element is visited by checking if it exists in the array
+         */
         Map<Integer,Boolean> resultMap= new HashMap<Integer,Boolean>();
         Queue<Integer> queue = new LinkedList<>();
 
