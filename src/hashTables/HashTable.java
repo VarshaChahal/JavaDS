@@ -1,9 +1,6 @@
 package hashTables;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
-
-import org.omg.SendingContext.RunTimeOperations;
 
 public class HashTable {
     // provide a size for your hash table which your hash function will depend on
@@ -16,6 +13,7 @@ public class HashTable {
 
     public HashTable(int size) {
         hashtable = new HashTableEntry[size];
+        this.size=size;
     }
 
     // HashTableEntry has the key which will decide the index in HashTable array
@@ -120,6 +118,39 @@ public class HashTable {
         }
         return null;
     }
+
+    /*
+     * return an array of keys.
+     */
+    public ArrayList<String> keys(){
+        ArrayList<String> keys = new ArrayList<String>();
+
+        for(int i=0;i<this.size;i++){
+            if(this.hashtable[i] !=null){
+                HashTableEntry entry = this.hashtable[i];
+                while(entry!=null){
+                    keys.add(entry.key);
+                    entry=entry.next;
+                }
+            }
+        }
+        return keys;
+    }
+
+    public ArrayList<String> values(){
+        ArrayList<String> values = new ArrayList<String>();
+
+        for(int i=0;i<this.size;i++){
+            if(this.hashtable[i] !=null){
+                HashTableEntry entry = this.hashtable[i];
+                while(entry!=null){
+                    values.add(entry.value);
+                    entry=entry.next;
+                }
+            }
+        }
+        return values;
+    }
  
     /*
      * Takes data of different size but returns data of same size everytime
@@ -147,7 +178,19 @@ public class HashTable {
         System.out.println("adding 4 at " + ht.put("four", "4"));
         System.out.println("adding 5 at " + ht.put("five", "5"));
 
-        System.out.println(ht.get(null));
+        System.out.println("going to print the keys of the hashtable "+ht.keys().size());
+        ht.keys().stream().forEach((key)->{
+            System.out.print(key+" ");
+        });
+        System.out.println();
+
+        System.out.println("going to print the keys of the hashtable "+ht.values().size());
+        ht.values().stream().forEach((value)->{
+            System.out.print(value+" ");
+        });
+        System.out.println();
+
+    //    System.out.println(ht.get(null));
         System.out.println("removing 3 " + ht.remove("three"));
     }
 }
