@@ -1,1 +1,18 @@
 Head, Tail, Length
+
+Big O:
+insertion: add to random position: O(n)
+           add to end: O(1)
+           add to front: O(1)
+removal: remove from end: O(1)
+         remove from random position: O(n)
+         remove from end: O(1)
+search/access: O(n)
+reverse: O(n)
+
+arrays win over singly linked lists in accessing an item if you have the index for that item.
+removal in arrays take time as we have to shift the elements to their right positions after searching for and removing an element
+
+linked lists are useful when you do not need random access to items in the list.
+
+****stacks and queues are built on top of linked lists as we only require deletion of addition from front and end.****
