@@ -130,7 +130,7 @@ public class BasicGraph {
     }
 
     /*
-     * if the vertex is having an adjacency list, return 
+     * if the vertex is not having an adjacency list, return 
      * add the vertex to the visited list and mark it as lisited
      * loop over the neighbors of vertex 
      *      if the neighbor is not visited

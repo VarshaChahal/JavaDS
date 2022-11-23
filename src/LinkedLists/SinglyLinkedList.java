@@ -238,6 +238,8 @@ public class SinglyLinkedList {
                     currNode.next = currNode.next.next;
                     this.length--;
                     return nodeToReturn;
+                }else{
+                    currNode = currNode.next;
                 }
             }
         }
@@ -256,19 +258,48 @@ public class SinglyLinkedList {
     }
 
     public void reverse(){
-        reverseHelper(this.head);
+      //  reverseHelper(this.head);
+          iterativeReverse();
     }
-    public Node reverseHelper(Node currNode){
-        if(currNode.value == this.tail.value){
-            return currNode;
+
+    public void iterativeReverse(){
+        /**
+         * Add condition to check if head is null
+         */
+        Node prev = null;
+        Node curr = this.head;
+        Node next = null;
+
+        while(curr!=null){
+            //save the next element as we are going to break the link between current and next by assigning the next of current to be previous
+            next = curr.next;
+            curr.next = prev;
+            //make the current element as previous and the next element as current as we move on
+            prev = curr;
+            curr = next;
         }
-        currNode.next = reverseHelper(currNode.next);
-        System.out.println("node here "+currNode.next.value);
-        Node node = remove(currNode.next.value);
-        add(node.value);
-        return currNode;
+       this.head = prev;
 
     }
+
+    /**
+     * recursive approach to return a linked list
+     * the idea here is to move from the second last node to the first node, where each node is removed from its position and moved to the end of the list
+     * thise approach requires additional operations like removing a node, which uses iteration over the list.
+     * @param currNode
+     */
+    public void reverseHelper(Node currNode){
+        if(currNode.next == null){
+            return;
+        }
+        reverseHelper(currNode.next);
+        System.out.println("node here "+currNode.value);
+        Node node = remove(currNode.value);
+        add(node.value);
+        //return currNode;
+
+    }
+
 
     public static void main(String[] args) {
         SinglyLinkedList linkedList = new SinglyLinkedList();
@@ -300,6 +331,7 @@ public class SinglyLinkedList {
 
         System.out.println("going to reverse the list ");
         linkedList.reverse();
+        System.out.println();
 
         linkedList.printLinkedList();
 
