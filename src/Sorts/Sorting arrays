@@ -21,3 +21,12 @@ Hence log(n).
 Therefore the overall time complexity is O(nlogn).
 
 Space Complexity: O(n)
+
+
+Quick Sort:
+Uses the fact that 0 or 1 elements in an array are always sorted.
+Select one element as the pivot, all the elements smaller than pivot are moved to the left side and all the elements greater than the pivot are moved to the right side of pivot.
+Once the pivot is positioned appropriately, quick sort can be applied on the either side of the array.
+
+
+Choice of pivot affects the runtime of quicksort
