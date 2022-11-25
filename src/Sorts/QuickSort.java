@@ -8,14 +8,17 @@ public class QuickSort{
         this.quickSortHelper(arr, 0, arr.length-1);
     }
 
-    public void quickSortHelper(int[] arr, int start, int end){
-        if(start == end) return;
+    public int[] quickSortHelper(int[] arr, int start, int end){
+        if(start>end){
+            System.out.println("ooooo");
+        }
+        if(start < end) {
+            int pivotIndex = pivotHelper(arr, start, end);
+            quickSortHelper(arr, start,pivotIndex-1);
+            quickSortHelper(arr, pivotIndex+1,end);
+        }
 
-        int pivotIndex = pivotHelper(arr, start, end);
-
-        quickSortHelper(arr, start,pivotIndex);
-        quickSortHelper(arr, pivotIndex,end);
-
+        return arr;
     }
     
     /**
@@ -60,7 +63,7 @@ public class QuickSort{
     public static void main(String[] args){
         QuickSort qs = new QuickSort();
 
-        int[] arr = new int[]{4,8,2,1,5,7,6,3};
+        int[] arr = new int[]{4,8,2,1,5,-7,6,3};
        // qs.swap(arr,0,3);
 
       // System.out.println("arr[0]"+arr[0]);

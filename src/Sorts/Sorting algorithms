@@ -1,0 +1,83 @@
+Merge Sort: 
+Split the array down to individual element, compare and merge those elements(merging here includes merging by sorting them)
+
+It's useful to implement the helper function first which will merge the two sorted arrays. Given two arrays which are sorted,
+this helper function should create a new array which is also sorted and consists of all the elements in the two sorted arrays passed to it.
+This function should run in O(n+m) time and use O(n+m) space and should not modify the parameters passed to it.
+
+Time Complexity:
+    Best: O(nlogn)
+    Avg: O(nlogn)
+    Worst: O(nlogn)
+
+O(logn) is the number of decompositions
+O(n) is the number of comparisons
+
+If you have  an array of 8 items, it is gonna take you 3 recursive calls to split it into 8 individual items => log(pow(2,3)) => 3 rec calls
+If you have an array of 32 items, it is gonna take you 5 recursive calls to split it into 32 individual items => log(pow(2,5)) => 5 rec calls
+Hence log(n).
+'n' for the number of comparisons. In the end, you do as many comparisons as the number of elements in the array. Look at the helper function.
+
+Therefore the overall time complexity is O(nlogn).
+
+Space Complexity: O(n)
+
+
+Quick Sort:
+Uses the fact that 0 or 1 elements in an array are always sorted.
+Select one element as the pivot, all the elements smaller than pivot are moved to the left side and all the elements greater than the pivot are moved to the right side of pivot.
+Once the pivot is positioned appropriately, quick sort can be applied on the either side of the array.
+
+Choice of pivot affects the runtime of quicksort
+
+Big O of Quick Sort: 
+    Time Complexity:
+        Best: O(nlogn)
+        Avg: O(nlogn)
+        Worst: O(n*n) -> when the data is already sorted. each decomposition will give you only one element subarray on one side and the entire array -1 element on right side or vice versa. This will lead to O(n) decomposition and O(n) comparisons in each decomposition. 
+        even if an array is not already sorted, such a case occurs when a pivot chosen is the minimum or the maximum element in an array. Atleast pivot around random item/ middle element.
+        Space: O(logn)
+
+nlogn: 
+    logn: for decomposition
+    n: for comparisons in each decomposition
+
+Comparison sort algorithms:
+    Bubble sort
+    Insertion sort
+    Selection sort
+    Quick sort
+    Merge sort
+Best avg time complexity for any comparison sort is : O(nlogn)
+
+Quick Sort vs Merge Sort: 
+Quick sort                                                           Merge Sort
+in-place, doesn't require extra storage                              not in place, requires extra storage
+top-down approach                                                    bottom up approach
+can give worst case complexity to O(n*n),in case of skewed data      always gives O(nlogn)
+more comparisons made than merge sort                                less comparisons made than quick sort
+number of swaps are lesses                                           number of swaps are more.
+faster when data is in memory                                        faster when data is on external storage
+                                                                     usually chosen when you don't want to cross the O(nlogn) mark in any case
+works well with random data                                          works the same even if data is sorted or not 
+unstable sort, can change the position of  duplicates             stable sort, doesn't change the position of duplicates
+more desirable than merge sort on huge data as merge sort requires additional storage
+
+Non comparison algortihms:
+    We do not compare data to check whether one element is greater than the other.
+
+Radix Sort: *****  O(logn)
+works on numbers(basically converts them to binary and works on them)
+It exploits the fact that the information about the size of a numebr is encoded in the number of digits.
+More digits means the number is bigger.
+We go over the digit at a certain position for each number in the array and organize thenm into buckets numbered 0 to 9. We repeat the process as many times as the numebr of digits in the largest number.
+
+
+How to select a sorting algorithm:
+1. Can you fit your data in memory: No? then use external sorting algorithms (quick sort and merge sort)
+    External sorting is a class of sorting algorithms that can handle massive amounts of data. External sorting is required when the data being sorted do not fit into the main memory of a computing device (usually RAM) and instead they must reside in the slower external memory, usually a disk drive.
+2. What is your input distribution: Sorted? better go with merge sort
+3. Kinds of elements you are sorting? If just numbers, then you can use Radix sort. Using generic objects? use comparison algorithms.
+4. Number of cores you have: Because some sorting algorithms are better at being parallelized. Research more****
+5. How is your data represented: Array? Use quicksort as arrays provide better locality of reference. mergesort might be slow due to the extra memory needed.
+                                 Linked List? quick sort works better with locality of reference, it loses to merge sort here.
