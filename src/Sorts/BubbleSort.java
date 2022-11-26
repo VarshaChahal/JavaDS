@@ -16,6 +16,7 @@ public class BubbleSort {
     public void bubbleSort(int[] arr){
         for(int i=0;i<arr.length-1;i++){
             boolean swapped = false;
+            //j until (arr.length-i-1) because i elements in the end are sorted in each outer loop
             for(int j=0;j<arr.length-1-i;j++){
                 if(arr[j]>arr[j+1]){
                     swap(arr,j,j+1);
