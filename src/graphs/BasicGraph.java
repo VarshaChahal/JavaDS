@@ -23,7 +23,7 @@ public class BasicGraph {
             this.label=label;
         }
     }
-
+ 
     /*
      * Simply add the vertex to the map and assign it a new arrayList which will be used later to add edges
      */
@@ -136,18 +136,18 @@ public class BasicGraph {
      *      if the neighbor is not visited
      *          call the dfs again on that neighbor of vertex
      */
-    public static void dfsRec(Map resultList,int vertex){
+    public static void dfsRec(Map map,int vertex){
         ArrayList<Integer> elAdjacencyList = adjList.get(vertex);
 
         if(elAdjacencyList == null || elAdjacencyList.isEmpty()){
             return;
         }
-        resultList.put(vertex,true);
+        map.put(vertex,true);
         //just printing the node marked visited above
         System.out.println(vertex);
         for(int ver: elAdjacencyList){
-            if(resultList.get(ver) == null ||  (boolean)resultList.get(ver)!= true){
-                dfsRec(resultList,ver);
+            if(map.get(ver) == null ||  (boolean)map.get(ver)!= true){
+                dfsRec(map,ver);
             }
         }
     }

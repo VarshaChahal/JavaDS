@@ -1,3 +1,14 @@
+Algorithnm          Best           Avg          Worst           Space
+Bubble              O(n)           O(n*n)       O(n*n)          O(1)
+Insertion           O(n)           O(n*n)       O(n*n)          O(1)
+Selection           O(n*n)         O(n*n)       O(n*n)          O(1)
+
+
+Insertion Sort:
+O(n*n) - quadratic
+when data is almost all sorted:  performs better
+
+
 Merge Sort: 
 Split the array down to individual element, compare and merge those elements(merging here includes merging by sorting them)
 
@@ -81,6 +92,6 @@ How to select a sorting algorithm:
 4. Number of cores you have: Because some sorting algorithms are better at being parallelized. Research more****
 5. How is your data represented: Array? Use quicksort as arrays provide better locality of reference. mergesort might be slow due to the extra memory needed.
                                  Linked List? quick sort works better with locality of reference, it loses to merge sort here.
-
+6. How the data is received:    Insertion sort is useful when the data is coming in on the fly since insertion sort keeps one side of the data array sorted.
 
 Locality of reference refers to a phenomenon in which a computer program tends to access same set of memory locations for a particular time period. In other words, Locality of Reference refers to the tendency of the computer program to access instructions whose addresses are near one another.
