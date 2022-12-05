@@ -1,0 +1,21 @@
+Fibonacci sequence: 
+    fib(num)
+        if(num == 1) return 1
+        retrurn fib(n-1)+fib(n-2)
+    
+Big O of regular fibonacci  : O(pow(2,n)) - exponential
+
+worst of all is factorial time complexity : O(n!)
+
+From best to worst below:
+    O(1) ---> O(logn) ---> O(n) ---> O(nlogn) ---> O(n*n) ---> O(pow(2,n)) ---> O(n!)
+
+Dynamic problems:
+    Overlapping Subproblem: Subproblems having the same solution
+    Optimal Substructure: if an optimal solution can be constructed from optimal solutions of its subproblems.
+
+Storing the solutions of subproblems.
+Memoization: storing the resukts of expensive function calls and returning the cached result when the same inputs occur again.
+Big O  after using Memoization: O(n)
+
+Tabulation with Bottom Up approach, saves you from making a lot of function calls and possibly a StackOverflowException
