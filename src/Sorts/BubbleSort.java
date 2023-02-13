@@ -41,11 +41,12 @@ public class BubbleSort {
     public static void main(String[] args){
         BubbleSort bs = new BubbleSort();
         int[] arr = new int[]{4,8,2,1,5,-7,6,3};
-
+  
         bs.bubbleSort(arr);
 
         Arrays.stream(arr).forEach((element)->{
             System.out.println(element);
         });
+
     }
 }
