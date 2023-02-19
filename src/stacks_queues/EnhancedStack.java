@@ -1,10 +1,10 @@
 package stacks_queues;
 
-public class Stack {
+class EnhancedStack {
     Node first;
     Node last;
     int size;
-    public Stack(){
+    public EnhancedStack(){
         this.first =null;
         this.last=null;
         this.size=0;
@@ -12,7 +12,7 @@ public class Stack {
     }
     
     /**
-     * adding nodes to the end
+     * adding nodes to the beginning
      * @param node
      * @return
      */
@@ -21,33 +21,26 @@ public class Stack {
                 this.first=node;
                 this.last=node;
             }else{
-                this.last.next=node;
-                this.last=node;
+                Node temp = this.first;
+                this.first=node;
+                this.first.next=temp;
             }
             return ++this.size;
     }
     /**
-     * Since we are adding to the end every time, pop will return the element from the end,
-     * which requires us to iterate till the end node, See enhanced version in EnhancedStack
+     * Removing nodes from the beginning, requires only a pointer change at first element
      * @return
      */
     public int pop(){
         int removedValue=-1;
+        removedValue=this.first.value;
+
         if(this.first.value==this.last.value){
-            removedValue=this.first.value;
             this.first=this.last=null;
            // this.size=0;
         }
         else{
-            Node current=this.first;
-            Node prev=null;
-            while(current.next!=null){
-                prev=current;
-                current=current.next;
-            }
-            removedValue=current.value;
-            this.last=prev;
-            this.last.next=null;
+            this.first=this.first.next;
         }
         this.size--;
 
@@ -64,7 +57,7 @@ public class Stack {
     }
 
     public static void main(String args[]){
-        Stack stack = new Stack();
+        EnhancedStack stack = new EnhancedStack();
         Node node1=new Node(1);
         Node node2=new Node(2);
         Node node3 = new Node(3);
@@ -74,8 +67,9 @@ public class Stack {
         stack.push(node1);
         stack.push(node2);
         stack.push(node3); 
-        System.out.println(stack.pop());
         stack.push(node4);
+        System.out.println(stack.pop());
+
         stack.push(new Node(5));
 
         stack.printStack();
