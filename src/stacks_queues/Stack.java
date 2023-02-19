@@ -11,30 +11,25 @@ public class Stack {
 
     }
 
-    public boolean push(Node node){
-        Node current;
-        if(node!=null){
+    public int push(Node node){
             if(this.first==null){
-                this.first=this.last=node;
+                this.first=node;
+                this.last=node;
             }else{
                 this.last.next=node;
+                this.last=node;
             }
-            this.size++;
-        }
-        else{
-            return false;
-        }
-        return true;
+            return ++this.size;
     }
 
     public int pop(){
         int removedValue=-1;
-        if(this.size==1){
+        if(this.first.value==this.last.value){
             removedValue=this.first.value;
             this.first=this.last=null;
-            this.size=0;
+           // this.size=0;
         }
-        if(this.size>1){
+        else{
             Node current=this.first;
             Node prev=null;
             while(current.next!=null){
@@ -44,9 +39,19 @@ public class Stack {
             removedValue=current.value;
             this.last=prev;
             this.last.next=null;
-            this.size--;
         }
+        this.size--;
+
         return removedValue;
+    }
+
+    public void printStack(){
+        Node current = this.first;
+
+        while(current!=null){
+            System.out.println("Stack entry: "+current.value);
+            current=current.next;
+        }
     }
 
     public static void main(String args[]){
@@ -59,9 +64,12 @@ public class Stack {
         System.out.println(stack.size);
         stack.push(node1);
         stack.push(node2);
-        stack.push(node3);
-        stack.push(node4);
+        stack.push(node3); 
         System.out.println(stack.pop());
+        stack.push(node4);
+        stack.push(new Node(5));
+
+        stack.printStack();
 
     }
 }
