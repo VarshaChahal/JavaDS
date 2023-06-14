@@ -268,6 +268,7 @@ public class SinglyLinkedList {
          */
         Node prev = null;
         Node curr = this.head;
+        this.head=this.tail;
         Node next = null;
 
         while(curr!=null){
@@ -278,7 +279,6 @@ public class SinglyLinkedList {
             prev = curr;
             curr = next;
         }
-       this.head = prev;
 
     }
 
